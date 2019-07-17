@@ -71,3 +71,4 @@
 		<touch name="robot0:l_gripper_finger_link_touch" site="robot0:l_gripper_finger_link:touch"></touch>
     </sensor>
 </mujoco>
+
