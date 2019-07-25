@@ -34,6 +34,8 @@ class GripperGoaltWrapper(gym.ObservationWrapper):
     def observation(self, observation):
         assert isinstance(observation, dict)
 
+        achieved_goals, desired_goals, observations = [], [], []
+        
         observ = observation['observation']
         gripper_pos = observ[0:3] # grip_position
         
