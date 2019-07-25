@@ -10,6 +10,13 @@ class GripperGoaltWrapper(gym.ObservationWrapper):
         0~6: achieved goal
         7~12: desired goal
         13~37: observation as before version
+
+    Usages : 
+        1. Copy this scripts under the path in gym/gym/wrappers
+        2. Add this in your code(follow the example https://blog.openai.com/ingredients-for-robotics-research):
+            from gym.wrappers import grippergoal_observation
+            env = grippergoal_observation.GripperGoaltWrapper(env, dict_keys=list(keys))       
+
     """
     def __init__(self, env, dict_keys):
         super(GripperGoaltWrapper, self).__init__(env)
