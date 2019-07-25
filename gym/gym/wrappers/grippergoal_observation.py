@@ -6,7 +6,7 @@ class GripperGoaltWrapper(gym.ObservationWrapper):
     """Flattens selected keys of a Dict observation space into
     an array and add the end-effector positions as the part of goal g = {g_object, g_gripper}. 
     I follow here(https://github.com/openai/gym/blob/9dea81b48a2e1d8f7e7a81211c0f09f627ee61a9/gym/envs/robotics/fetch_env.py#L112)
-    to select the gripper position and object position
+    to select the gripper position and object position.
 
     Output : 37 dimensions infomation
         0~6: achieved goal
