@@ -16,6 +16,7 @@ class GripperGoaltWrapper(gym.ObservationWrapper):
     Usages : 
         1. Copy this scripts under the path in gym/gym/wrappers
         2. Add this in your code(follow the example https://blog.openai.com/ingredients-for-robotics-research):
+            keys = env.observation_space.spaces.keys()
             from gym.wrappers import grippergoal_observation
             env = grippergoal_observation.GripperGoaltWrapper(env, dict_keys=list(keys))       
 
