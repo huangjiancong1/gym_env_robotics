@@ -3,8 +3,11 @@ This source is base on OpenAI-Gym robotics env
 
 We will use the gripper goal as one of the reward contributors:
 **object distance weight**: weight_o
+
 **gripper distance weight**: weight_g
+
 **object distance**: distance_o = ||ag_o - dg_o||
+
 **gripper distance**: distance_g = ||ag_g - dg_g||
 
 **distance function**:
