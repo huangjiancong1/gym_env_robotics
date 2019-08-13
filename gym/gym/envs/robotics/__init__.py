@@ -3,7 +3,13 @@ from gym.envs.robotics.fetch.slide import FetchSlideEnv
 from gym.envs.robotics.fetch.pick_and_place import FetchPickAndPlaceEnv
 from gym.envs.robotics.fetch.push import FetchPushEnv
 from gym.envs.robotics.fetch.reach import FetchReachEnv
-from gym.envs.robotics.fetch.kitting import FetchKittingEnv
+
+
+from gym.envs.robotics.fetchweight_env import FetchWeightEnv
+from gym.envs.robotics.fetchseperated_env import FetchSeperatedEnv
+from gym.envs.robotics.fetch.push_weight import FetchPushWeightEnv
+from gym.envs.robotics.fetch.push_seperated import FetchPushSeperatedEnv
+
 
 from gym.envs.robotics.hand.reach import HandReachEnv
 from gym.envs.robotics.hand.manipulate import HandBlockEnv

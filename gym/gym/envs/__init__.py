@@ -375,11 +375,19 @@ for reward_type in ['sparse', 'dense']:
     )
 
     register(
-        id='FetchKitting{}-v1'.format(suffix),
-        entry_point='gym.envs.robotics:FetchKittingEnv',
+        id='FetchPushWeight{}-v1'.format(suffix),
+        entry_point='gym.envs.robotics:FetchPushWeightEnv',
         kwargs=kwargs,
-        max_episode_steps=100,
+        max_episode_steps=50,
     )
+
+    register(
+        id='FetchPushSeperated{}-v1'.format(suffix),
+        entry_point='gym.envs.robotics:FetchPushSeperatedEnv',
+        kwargs=kwargs,
+        max_episode_steps=50,
+    )
+
 
     # Hand
     register(

@@ -7,8 +7,13 @@ def goal_distance(goal_a, goal_b):
     assert goal_a.shape == goal_b.shape
     return np.linalg.norm(goal_a - goal_b, axis=-1)
 
+# -------------------------------------------------------------------
+def obj_gripper_distance(obj, gripper):
+    assert obj.shape == gripper.shape
+    return np.linalg.norm(obj - gripper, axis=1)
+# -------------------------------------------------------------------
 
-class FetchKittingEnv(robot_env.RobotEnv):
+class FetchSeperatedEnv(robot_env.RobotEnv):
     """Superclass for all Fetch environments.
     """
 
@@ -43,7 +48,7 @@ class FetchKittingEnv(robot_env.RobotEnv):
         self.distance_threshold = distance_threshold
         self.reward_type = reward_type
 
-        super(FetchKittingEnv, self).__init__(
+        super(FetchSeperatedEnv, self).__init__(
             model_path=model_path, n_substeps=n_substeps, n_actions=4,
             initial_qpos=initial_qpos)
 
@@ -105,27 +110,31 @@ class FetchKittingEnv(robot_env.RobotEnv):
         gripper_state = robot_qpos[-2:]
         gripper_vel = robot_qvel[-2:] * dt  # change to a scalar if the gripper is made symmetric
 
-        # force(3d), tourque(3d), gripper_tip_touch_sensors(2*1d)
-        gripper_sensor = self.sim.data.sensordata
-
-
         if not self.has_object:
             achieved_goal = grip_pos.copy()
         else:
             achieved_goal = np.squeeze(object_pos.copy())
-        # obs = np.concatenate([
-        #     grip_pos, object_pos.ravel(), object_rel_pos.ravel(), gripper_state, object_rot.ravel(),
-        #     object_velp.ravel(), object_velr.ravel(), grip_velp, gripper_vel,
-        # ])
         obs = np.concatenate([
             grip_pos, object_pos.ravel(), object_rel_pos.ravel(), gripper_state, object_rot.ravel(),
-            object_velp.ravel(), object_velr.ravel(), grip_velp, gripper_vel, gripper_sensor
+            object_velp.ravel(), object_velr.ravel(), grip_velp, gripper_vel,
         ])
+
+        desired_goal = self.goal.copy()
+
+        # grippergoal weight rewards----------------------------------------------------------------------
+                        
+        gripper_goal = self.goal.copy()
+        # if self.env.env.spec.id == 'FetchSlide-v1':
+            # gripper_goal = obs[4:6].ravel() # object_position
+        achieved_goal = np.append(achieved_goal, grip_pos.copy())
+        desired_goal = np.append(gripper_goal, gripper_goal)
+
+        # ------------------------------------------------------------------------------------------------
 
         return {
             'observation': obs.copy(),
             'achieved_goal': achieved_goal.copy(),
-            'desired_goal': self.goal.copy(),
+            'desired_goal': desired_goal.copy(),
         }
 
     def _viewer_setup(self):
@@ -171,9 +180,21 @@ class FetchKittingEnv(robot_env.RobotEnv):
             goal = self.initial_gripper_xpos[:3] + self.np_random.uniform(-0.15, 0.15, size=3)
         return goal.copy()
 
+#--------------------------------------------------------------------------------------------------------------
     def _is_success(self, achieved_goal, desired_goal):
-        d = goal_distance(achieved_goal, desired_goal)
+        distance_gripper_threshold = self.distance_threshold
+        d_o = goal_distance(achieved_goal[0:3], desired_goal[0:3])
+        d_g = goal_distance(achieved_goal[3:6], desired_goal[3:6])
+        if d_g >= distance_gripper_threshold:
+            weight_g=1
+            weight_o=0
+        else:
+            weight_g=0
+            weight_o=1
+
+        d = weight_o*d_o + weight_g*d_g
         return (d < self.distance_threshold).astype(np.float32)
+#-------------------------------------------------------------------------------------------------------------
 
     def _env_setup(self, initial_qpos):
         for name, value in initial_qpos.items():
@@ -195,4 +216,4 @@ class FetchKittingEnv(robot_env.RobotEnv):
             self.height_offset = self.sim.data.get_site_xpos('object0')[2]
 
     def render(self, mode='human', width=500, height=500):
-        return super(FetchKittingEnv, self).render(mode, width, height)
+        return super(FetchSeperatedEnv, self).render(mode, width, height)
