@@ -41,14 +41,34 @@ def plot(result, log_folder, precentile, n_epoch, title):
 
     value_down, value_media, value_up = np.percentile(all_exp, precentile, axis=0)
 
-    plt.figure(figsize=(15,10))
+
+
+    fig = plt.figure(figsize=(15,10))
+    ax = fig.add_subplot(1, 1, 1)
+
+    # Major ticks every 20, minor ticks every 5
+    major_ticks = np.arange(0, n_epoch, 20)
+    minor_ticks = np.arange(0, n_epoch, 5)
+
+    ax.set_xticks(major_ticks)
+    ax.set_xticks(minor_ticks, minor=True)
+    # ax.set_yticks(major_ticks)
+    # ax.set_yticks(minor_ticks, minor=True)
+
+    # And a corresponding grid
+    ax.grid(which='both')
+
+    # Or if you want different settings for the grids:
+    ax.grid(which='minor', alpha=0.2)
+    ax.grid(which='major', alpha=0.5)
+
     plt.plot(np.arange(len(value_media)), value_media, color='blue' )
     plt.fill_between(np.arange(len(value_media)),value_up,value_down,color='b',alpha = 0.2)
 
-    plt.xlabel('n_epoch')
-    plt.ylabel(result)
-    plt.title(title)
-    plt.legend(loc=2)
+    # plt.suptitle(title)
+    ax.set_xlabel('n_epoch')
+    ax.set_ylabel(result)
+
     plt.savefig(title+'.png')
     plt.show()
 
