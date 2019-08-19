@@ -16,23 +16,23 @@ plt.rcParams["font.family"] = "Time New Roman"
 @click.option('--title', type=str, default='FetchExperiments', help='tile of the table you plotting')
 
 def plot(result, log_folder, precentile, n_epoch, title):
-    result_class = [
-        'epoch',
-        'stats_g/mean',
-        'stats_g/std',
-        'stats_o/mean',
-        'stats_o/std',
-        'test/episode',
-        'test/mean_Q',
-        'test/success_rate',
-        'train/episode',
-        'train/success_rate'
-        ]
+    # result_class = [
+    #     'epoch',
+    #     'stats_g/mean',
+    #     'stats_g/std',
+    #     'stats_o/mean',
+    #     'stats_o/std',
+    #     'test/episode',
+    #     'test/mean_Q',
+    #     'test/success_rate',
+    #     'train/episode',
+    #     'train/success_rate'
+    #     ]
 
     all_exp = []
     num_exps = 0 
     for logfile in os.listdir(log_folder):
-        csv = pd.read_csv(log_folder+logfile+'/progress.csv', skipinitialspace=True, usecols=result_class)
+        csv = pd.read_csv(log_folder+logfile+'/progress.csv', skipinitialspace=True)
         exp = csv[result]._values
         exp = exp[0:n_epoch] # useful for align, bc some experiments didn't finish all epochs
         all_exp.append(exp)
