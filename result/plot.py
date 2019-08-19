@@ -65,7 +65,7 @@ def plot(result, log_folder, precentile, n_epoch, title):
     plt.plot(np.arange(len(value_media)), value_media, color='blue' )
     plt.fill_between(np.arange(len(value_media)),value_up,value_down,color='b',alpha = 0.2)
 
-    # plt.suptitle(title)
+    plt.suptitle(title)
     ax.set_xlabel('n_epoch')
     ax.set_ylabel(result)
 
