@@ -10,7 +10,7 @@ plt.rcParams["font.family"] = "Time New Roman"
 
 @click.command()
 @click.option('--result', type=str, default='test/success_rate', help='epoch,stats_g/mean,stats_g/std,stats_o/mean,stats_o/std,test/episode,test/mean_Q,test/success_rate,train/episode,train/success_rate')
-@click.option('--log_folder', type=str, default = '/home/data/jim/her_goal_augmentation/Weight_0.7_0.3/', help='the log_path you use in baselines.run commamd')
+@click.option('--log_folder', type=str, default = '/home/data/jim/her_goal_augmentation/Weight_0.7_0.3/', help='the log_path you use in baselines.run commamd, like /home/data/jim/her_experiments/')
 @click.option('--precentile', type=list, default=[25,50,75], help='the precent you want to use to compare')
 @click.option('--n_epoch', type=int, default=50, help='how many epoch you want to see from 0~n_epoch')
 @click.option('--title', type=str, default='FetchExperiments', help='tile of the table you plotting')
