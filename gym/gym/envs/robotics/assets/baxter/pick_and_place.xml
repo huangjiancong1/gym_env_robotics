@@ -29,7 +29,7 @@
 	</worldbody>
 	
 	<actuator>
-		<position ctrllimited="true" ctrlrange="0 0.2" joint="l_gripper_l_finger_joint" kp="30000" name="l_gripper_l_finger_joint" user="1"></position>
-		<position ctrllimited="true" ctrlrange="-0.2 0" joint="l_gripper_r_finger_joint" kp="30000" name="l_gripper_r_finger_joint" user="1"></position>
+		<position ctrllimited="true" ctrlrange="0 0.020833" joint="l_gripper_l_finger_joint" kp="30000" name="l_gripper_l_finger_joint" user="1"></position>
+		<position ctrllimited="true" ctrlrange="0 0.020833" joint="l_gripper_r_finger_joint" kp="30000" name="l_gripper_r_finger_joint" user="1"></position>
     </actuator>
 </mujoco>
