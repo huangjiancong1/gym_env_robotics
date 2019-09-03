@@ -174,8 +174,8 @@ class BaxterEnv(robot_env.RobotEnv):
         self.sim.forward()
 
         # Move end effector into position.
-        gripper_target = np.array([-0.151, -0.831, -0.302 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('robot0:grip')#---baxter
-        gripper_rotation = np.array([0., 0., 1., 0.]) #---baxter
+        gripper_target = np.array([-0.151, -0.831, -0.602 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('robot0:grip')#---baxter
+        gripper_rotation = np.array([0., 0., 1., 0.]) #---baxter [0 0 1 0]
         self.sim.data.set_mocap_pos('robot0:mocap', gripper_target)
         self.sim.data.set_mocap_quat('robot0:mocap', gripper_rotation)
         for _ in range(10):
