@@ -8,21 +8,21 @@
 	<include file="shared.xml"></include>
 	
 	<worldbody>
-		<geom name="floor0" pos="0.8 0 -0.96" size="2.85 2.7 1" type="plane" condim="3" material="floor_mat" ></geom>
-		<body name="floor0" pos="0.8 0 -0.96">
-			<site name="target0" pos="0 0 0.85" size="0.05 0.05 0.05" rgba="1 0 0 1" type="sphere"></site>
+		<geom name="floor0" pos="0.8 0 -0.92" size="2.85 2.7 1" type="plane" condim="3" material="floor_mat" ></geom>
+		<body name="floor0" pos="0.8 0 -0.92">
+			<site name="target0" pos="0 0 0.76225" size="0.0225 0.0225 0.0225" rgba="1 0 0 1" type="sphere"></site> <!-- target size : 4.5cm -->
 		</body>
 
 		<include file="baxter_test.xml"></include>
 
-		<body name="table0" pos="2.05 0 -0.56">
-			<geom size="1.5 0.75 0.4" type="box" mass="2000" material="table_mat" friction="0.1 0.005 0.0001"></geom>
+		<body pos="2.05 0 -0.55" name="table0">		<!-- table high: 74cm -->
+			<geom size="1.5 0.75 0.37" type="box" mass="2000" material="table_mat"></geom>
 		</body>
 		
-		<body name="object0" pos="1.1 0 0.82">
-			<joint name="object0:joint" type="free" damping="0.01" limited="false"></joint>
-			<geom size="0.050 0.06" type="cylinder" condim="4" name="object0" material="puck_mat" friction="0.1 0.005 0.0001" mass="3"></geom>
-			<site name="object0" pos="0 0 0" size="0.05 0.05 0.05" rgba="1 0 0 1" type="sphere"></site>
+		<body name="object0" pos="1.1 0 0.76225">
+			<joint name="object0:joint" type="free" damping="0.01" limited="false"/>
+			<geom size="0.0225 0.0225 0.0225" type="box" condim="3" name="object0" material="block_mat" mass="2"></geom> <!-- object size : 4.5cm -->
+			<site name="object0" pos="0 0 0" size="0.020 0.020 0.020" rgba="1 0 0 1" type="sphere"></site>
 		</body>
 
 		<light directional="true" ambient="0.2 0.2 0.2" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3" castshadow="false" pos="0 0 4" dir="0 0 -1" name="light0"></light>

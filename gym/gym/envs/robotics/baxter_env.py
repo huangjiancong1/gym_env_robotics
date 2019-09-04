@@ -81,8 +81,8 @@ class BaxterEnv(robot_env.RobotEnv):
         action = np.concatenate([pos_ctrl, rot_ctrl, gripper_ctrl])
 
         # Apply action to simulation.
-        utils.ctrl_set_action(self.sim, action)
-        utils.mocap_set_action(self.sim, action)
+        utils.ctrl_set_action(self.sim, action) # crtl the finger actuator
+        utils.mocap_set_action(self.sim, action) # set the next mocap pos and rot
 
     def _get_obs(self):
         # positions
@@ -174,13 +174,15 @@ class BaxterEnv(robot_env.RobotEnv):
         self.sim.forward()
 
         # Move end effector into position.  Fetch:-0.498, 0.005, -0.431   baxter:-0.151, -0.831, -0.602
-        # gripper_target = np.array([-0.498, 0.005, -0.431 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('robot0:grip') #---baxter
+        # gripper_target = np.array([0, 0, 0 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('robot0:grip') #---baxter
         # # gripper_target = np.array([0, 0, 0 + self.gripper_extra_height]) #---baxter
-        # gripper_rotation = np.array([1., 0., 1., 0.]) #---baxter [0 0 1 0]
+        # gripper_rotation = np.array([0., 0., 0., 0.]) #---baxter [0 0 1 0]
         # self.sim.data.set_mocap_pos('robot0:mocap', gripper_target)
         # self.sim.data.set_mocap_quat('robot0:mocap', gripper_rotation)
         # for _ in range(10): # ------------baxter
         #     self.sim.step() # ------------baxter
+        # self.sim.step() # ------------baxter
+
 
         # Extract information for sampling goals.
         self.initial_gripper_xpos = self.sim.data.get_site_xpos('robot0:grip').copy()
