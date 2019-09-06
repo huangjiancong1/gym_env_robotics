@@ -2,7 +2,7 @@ import gym
 import numpy as np
 
 
-"""Data generation for the case of a single block pick and place in Fetch Env"""
+"""Data generation for the case of a single block pick and place in Baxter Env"""
 
 actions = []
 observations = []
