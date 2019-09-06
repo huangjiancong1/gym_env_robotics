@@ -15,7 +15,7 @@
 
 		<include file="baxter_test.xml"></include>
 
-		<body pos="0.9 0 -0.55" name="table0">		<!-- table high: 74cm -->
+		<body pos="0.8 0 -0.55" name="table0">		<!-- table high: 74cm -->
 			<geom size="0.65 0.75 0.37" type="box" mass="2000" material="table_mat"></geom>
 		</body>
 		
