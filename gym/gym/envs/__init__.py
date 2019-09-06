@@ -376,29 +376,29 @@ for reward_type in ['sparse', 'dense']:
 
     # Baxter
     register(
-        id='BaxterSlide{}-v1'.format(suffix),
-        entry_point='gym.envs.robotics:BaxterSlideEnv',
+        id='FetchSlideJointActuator{}-v1'.format(suffix),
+        entry_point='gym.envs.robotics:FetchSlideJointActuatorEnv',
         kwargs=kwargs,
         max_episode_steps=50,
     )
 
     register(
-        id='BaxterPickAndPlace{}-v1'.format(suffix),
-        entry_point='gym.envs.robotics:BaxterPickAndPlaceEnv',
+        id='FetchPickAndPlaceJointActuator{}-v1'.format(suffix),
+        entry_point='gym.envs.robotics:FetchPickAndPlaceJointActuatorEnv',
         kwargs=kwargs,
         max_episode_steps=50,
     )
 
     register(
-        id='BaxterReach{}-v1'.format(suffix),
-        entry_point='gym.envs.robotics:BaxterReachEnv',
+        id='FetchReachJointActuator{}-v1'.format(suffix),
+        entry_point='gym.envs.robotics:FetchReachJointActuatorEnv',
         kwargs=kwargs,
         max_episode_steps=50,
     )
 
     register(
-        id='BaxterPush{}-v1'.format(suffix),
-        entry_point='gym.envs.robotics:BaxterPushEnv',
+        id='FetchPushJointActuator{}-v1'.format(suffix),
+        entry_point='gym.envs.robotics:FetchPushJointActuatorEnv',
         kwargs=kwargs,
         max_episode_steps=50,
     )

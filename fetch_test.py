@@ -2,14 +2,14 @@ import gym
 import numpy as np
 
 
-"""Data generation for the case of a single block pick and place in Baxter Env"""
+"""Data generation for the case of a single block pick and place in Fetch Env"""
 
 actions = []
 observations = []
 infos = []
 
 def main():
-    env = gym.make('BaxterPickAndPlace-v1')
+    env = gym.make('FetchPickAndPlace-v1')
     numItr = 100
     initStateSpace = "random"
     env.reset()

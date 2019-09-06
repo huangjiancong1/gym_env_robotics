@@ -13,8 +13,8 @@ from gym.envs.robotics.hand.manipulate_touch_sensors import HandBlockTouchSensor
 from gym.envs.robotics.hand.manipulate_touch_sensors import HandEggTouchSensorsEnv
 from gym.envs.robotics.hand.manipulate_touch_sensors import HandPenTouchSensorsEnv
 
-from gym.envs.robotics.baxter_env import BaxterEnv
-from gym.envs.robotics.baxter.slide import BaxterSlideEnv
-from gym.envs.robotics.baxter.pick_and_place import BaxterPickAndPlaceEnv
-from gym.envs.robotics.baxter.push import BaxterPushEnv
-from gym.envs.robotics.baxter.reach import BaxterReachEnv
+from gym.envs.robotics.fetch_joint_actuator_env import FetchJointActuatorEnv
+from gym.envs.robotics.fetch.slide_joint_actuator import FetchSlideJointActuatorEnv
+from gym.envs.robotics.fetch.pick_and_place_joint_actuator import FetchPickAndPlaceJointActuatorEnv
+from gym.envs.robotics.fetch.push_joint_actuator import FetchPushJointActuatorEnv
+from gym.envs.robotics.fetch.reach_joint_actuator import FetchReachJointActuatorEnv
