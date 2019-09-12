@@ -10,9 +10,9 @@ MODEL_XML_PATH = os.path.join('baxter', 'pick_and_place.xml')
 class BaxterPickAndPlaceEnv(baxter_env.BaxterEnv, utils.EzPickle):
     def __init__(self, reward_type='sparse'):
         initial_qpos = {
-            'robot0:slide0': 0.0, #-----baxter
-            'robot0:slide1': 0.0, #-----baxter
-            'robot0:slide2': 0.0, #-----baxter
+            # 'robot0:slide0': 0.0, #-----baxter
+            # 'robot0:slide1': 0.0, #-----baxter
+            # 'robot0:slide2': 0.0, #-----baxter
             'right_s0': -0.2286, #-----baxter
             'right_s1': -1.0044, #-----baxter
             'right_w0': -0.6535, #-----baxter
@@ -27,7 +27,7 @@ class BaxterPickAndPlaceEnv(baxter_env.BaxterEnv, utils.EzPickle):
             'left_e1': 1.9232284106140138, #-----baxter
             'left_s0': -0.07823302009277344, #-----baxter
             'left_s1': -0.9675583808532715, #-----baxter
-            'object0:joint': [1.65, 0.53, -0.1, 1., 0., 0., 0.],
+            'object0:joint': [1.75, 0.73, -0.1, 1., 0., 0., 0.],
             # 'object0:joint': [0., 0., 0., 0., 0., 0., 0.],
 
         }

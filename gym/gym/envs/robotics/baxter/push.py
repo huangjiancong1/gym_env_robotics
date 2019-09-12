@@ -10,9 +10,9 @@ MODEL_XML_PATH = os.path.join('baxter', 'push.xml')
 class BaxterPushEnv(baxter_env.BaxterEnv, utils.EzPickle):
     def __init__(self, reward_type='sparse'):
         initial_qpos = {
-            'robot0:slide0': 0.0, #-----baxter
-            'robot0:slide1': 0.0, #-----baxter
-            'robot0:slide2': 0.0, #-----baxter
+            # 'robot0:slide0': 0.0, #-----baxter
+            # 'robot0:slide1': 0.0, #-----baxter
+            # 'robot0:slide2': 0.0, #-----baxter
             'right_s0': -0.2286, #-----baxter
             'right_s1': -1.0044, #-----baxter
             'right_w0': -0.6535, #-----baxter
