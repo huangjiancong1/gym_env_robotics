@@ -79,7 +79,7 @@
                     <geom type="sphere" size="0.001" rgba="0.2 0.2 0.2 1" pos="0 0 0" />
                 </body>-->
 				
-				
+			
                 <body name="right_arm_mount" pos="0.024645 -0.219645 0.118588" quat="0.923879 0 0 -0.382684">
                     <inertial pos="0 0 0" mass="0.0001" diaginertia="1e-008 1e-008 1e-008" />
                     <body name="right_upper_shoulder" pos="0.055695 0 0.011038">
@@ -182,6 +182,9 @@
                         </body>
                     </body>
                 </body>
+                
+            <!-- <site name="symmetry_plane" size="0.5 0.001 0.4" pos="0.06402725482097774 0.25902736953530825 0.129626" type="box" rgba="1 1 0 0.3" /> s0: 0.06402725482097774 0.25902736953530825 0.129626 object: /> -->
+            <!-- <site name="test_distances" pos="0.5792130768228881 0.170487268730331 0.10099752125700717" rgba="1 1 0 1" size="0.02 0.02 0.02"></site> -->
                 <body name="left_arm_mount" pos="0.024645 0.219645 0.118588" quat="0.923879 0 0 0.382684">
                     <inertial pos="0 0 0" mass="0.0001" diaginertia="1e-008 1e-008 1e-008" />
                     <body name="left_upper_shoulder" pos="0.055695 0 0.011038">

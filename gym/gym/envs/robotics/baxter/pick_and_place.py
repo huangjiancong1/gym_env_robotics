@@ -27,7 +27,7 @@ class BaxterPickAndPlaceEnv(baxter_env.BaxterEnv, utils.EzPickle):
             'left_e1': 1.9232284106140138, #-----baxter
             'left_s0': -0.07823302009277344, #-----baxter
             'left_s1': -0.9675583808532715, #-----baxter
-            'object0:joint': [1.75, 0.73, -0.1, 1., 0., 0., 0.],
+            'object0:joint': [1.65, 0.259027, -0.15, 1., 0., 0., 0.],
             # 'object0:joint': [0., 0., 0., 0., 0., 0., 0.],
 
         }
