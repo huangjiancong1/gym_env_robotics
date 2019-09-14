@@ -12,6 +12,9 @@ SINGLE_SUC_RATE_THRESHOLD = None  # Set to none if donnot terminate KER
 
 MAX_Z_THETA_PICK_PUSH = 0.1443
 MAX_Z_THETA_SLIDE = 0.0697
+
+MAX_Z_THETA_BAXTER = 0.174
+
 COUNT_UNVALID_OBJ = True
 unvalid_episode = False
 BOOL_OUTPUT_ONE_EPISODE_TRAJ = False # Generated one episode KER trajectories for plotting
@@ -31,12 +34,12 @@ class mirror_learning:
             self.robot_base_y = 0.75
         if (self.env_type == 'BaxterPickAndPlace-v1') or (self.env_type == 'BaxterPush-v1' )or (self.env_type == 'BaxterReach-v1' ) :
             self.max_z_theta= MAX_Z_THETA_PICK_PUSH
-            self.robot_base_x = 0.695
-            self.robot_base_y = 0.75
+            self.robot_base_x = 0.06402725
+            self.robot_base_y = 0.2590273
         elif  self.env_type == 'BaxterSlide-v1' :
             self.max_z_theta = MAX_Z_THETA_SLIDE
-            self.robot_base_x = 0.34
-            self.robot_base_y = 0.75
+            self.robot_base_x = 0.06402725
+            self.robot_base_y = 0.2590273
 
 
     def y_mirror(self,param):
