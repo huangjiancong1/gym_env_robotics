@@ -33,11 +33,11 @@ class mirror_learning:
             self.robot_base_x = 0.34
             self.robot_base_y = 0.75
         if (self.env_type == 'BaxterPickAndPlace-v1') or (self.env_type == 'BaxterPush-v1' )or (self.env_type == 'BaxterReach-v1' ) :
-            self.max_z_theta= MAX_Z_THETA_PICK_PUSH
+            self.max_z_theta= MAX_Z_THETA_BAXTER
             self.robot_base_x = 0.06402725
             self.robot_base_y = 0.2590273
         elif  self.env_type == 'BaxterSlide-v1' :
-            self.max_z_theta = MAX_Z_THETA_SLIDE
+            self.max_z_theta = MAX_Z_THETA_BAXTER
             self.robot_base_x = 0.06402725
             self.robot_base_y = 0.2590273
 
