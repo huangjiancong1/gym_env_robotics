@@ -81,8 +81,8 @@ class FetchEnv(robot_env.RobotEnv):
         action = np.concatenate([pos_ctrl, rot_ctrl, gripper_ctrl])
 
         # Apply action to simulation.
-        utils.ctrl_set_action(self.sim, action)
-        utils.mocap_set_action(self.sim, action)
+        # utils.ctrl_set_action(self.sim, action)
+        # utils.mocap_set_action(self.sim, action)
 
     def _get_obs(self):
         # positions
@@ -147,6 +147,9 @@ class FetchEnv(robot_env.RobotEnv):
             object_qpos = self.sim.data.get_joint_qpos('object0:joint')
             assert object_qpos.shape == (7,)
             object_qpos[:2] = object_xpos
+            object_qpos= np.array([1.35, 0.6, 0.4, 1., 0., 0., 0.])
+            # real 1.35, 0.9, 0.4, 1., 0., 0., 0.
+            # sym 1.35, 0.6, 0.4, 1., 0., 0., 0. 
             self.sim.data.set_joint_qpos('object0:joint', object_qpos)
 
         self.sim.forward()
@@ -154,13 +157,20 @@ class FetchEnv(robot_env.RobotEnv):
 
     def _sample_goal(self):
         if self.has_object:
-            goal = self.initial_gripper_xpos[:3] + self.np_random.uniform(-self.target_range, self.target_range, size=3)
-            goal += self.target_offset
+            # goal = self.initial_gripper_xpos[:3] + self.np_random.uniform(-self.target_range, self.target_range, size=3)
+            goal = self.initial_gripper_xpos[:3]
+            
+            # goal += self.target_offset
             goal[2] = self.height_offset
-            if self.target_in_the_air and self.np_random.uniform() < 0.5:
-                goal[2] += self.np_random.uniform(0, 0.45)
+            goal[1] = 0.5 # real:1.05 sym:0.5
+            goal[0] = 1.45 # real 1.45
+            # if self.target_in_the_air and self.np_random.uniform() < 0.5:
+            #     goal[2] += self.np_random.uniform(0, 0.45)
+            if self.target_in_the_air :
+                goal[2] += 0.2
         else:
             goal = self.initial_gripper_xpos[:3] + self.np_random.uniform(-0.15, 0.15, size=3)
+
         return goal.copy()
 
     def _is_success(self, achieved_goal, desired_goal):
@@ -173,8 +183,8 @@ class FetchEnv(robot_env.RobotEnv):
         utils.reset_mocap_welds(self.sim)
         self.sim.forward()
 
-        # Move end effector into position. -0.498, 0.005, -0.431
-        gripper_target = np.array([-0.498, 0.005, -0.431 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('robot0:grip')
+        # Move end effector into position. # real -0.50, 0.02, -0.29  sym:-0.50, -0.02, -0.29
+        gripper_target = np.array([-0.50, -0.02, -0.29 + self.gripper_extra_height]) + self.sim.data.get_site_xpos('robot0:grip')
         gripper_rotation = np.array([1., 0., 1., 0.])
         self.sim.data.set_mocap_pos('robot0:mocap', gripper_target)
         self.sim.data.set_mocap_quat('robot0:mocap', gripper_rotation)
