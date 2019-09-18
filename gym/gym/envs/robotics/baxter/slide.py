@@ -15,20 +15,20 @@ class BaxterSlideEnv(baxter_env.BaxterEnv, utils.EzPickle):
             # 'robot0:slide0': 0.0, #-----baxter
             # 'robot0:slide1': 0.0, #-----baxter
             # 'robot0:slide2': 0.0, #-----baxter
-            'right_s0': -0.2286, #-----baxter
-            'right_s1': -1.0044, #-----baxter
-            'right_w0': -0.6535, #-----baxter
-            'right_w1':  1.0028, #-----baxter
-            'right_w2':  0.5196, #-----baxter
-            'right_e0':  1.2598, #-----baxter
-            'right_e1':  2.0003, #-----baxter
-            'left_w0': 0.6477233869445801, #-----baxter
-            'left_w1': 1.007825376489258, #-----baxter
-            'left_w2': -0.48282045243530275, #-----baxter
-            'left_e0': -1.1504855895996096, #-----baxter
-            'left_e1': 1.9232284106140138, #-----baxter
-            'left_s0': -0.07823302009277344, #-----baxter
-            'left_s1': -0.9675583808532715, #-----baxter
+            'robot0:right_s0': -0.2286, #-----baxter
+            'robot0:right_s1': -1.0044, #-----baxter
+            'robot0:right_w0': -0.6535, #-----baxter
+            'robot0:right_w1':  1.0028, #-----baxter
+            'robot0:right_w2':  0.5196, #-----baxter
+            'robot0:right_e0':  1.2598, #-----baxter
+            'robot0:right_e1':  2.0003, #-----baxter
+            'robot0:left_w0': 0.6477233869445801, #-----baxter
+            'robot0:left_w1': 1.007825376489258, #-----baxter
+            'robot0:left_w2': -0.48282045243530275, #-----baxter
+            'robot0:left_e0': -1.1504855895996096, #-----baxter
+            'robot0:left_e1': 1.9232284106140138, #-----baxter
+            'robot0:left_s0': -0.07823302009277344, #-----baxter
+            'robot0:left_s1': -0.9675583808532715, #-----baxter
             'object0:joint': [1.65, 0.259027, -0.15, 1., 0., 0., 0.],
         }
         baxter_env.BaxterEnv.__init__(
