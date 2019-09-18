@@ -63,8 +63,8 @@ class BaxterEnv(robot_env.RobotEnv):
 
     def _step_callback(self):
         if self.block_gripper:
-            self.sim.data.set_joint_qpos('l_gripper_l_finger_joint', 0.) #----baxter
-            self.sim.data.set_joint_qpos('l_gripper_r_finger_joint', 0.) #----baxter
+            self.sim.data.set_joint_qpos('robot0:l_gripper_l_finger_joint', 0.) #----baxter
+            self.sim.data.set_joint_qpos('robot0:l_gripper_r_finger_joint', 0.) #----baxter
             self.sim.forward()
 
     def _set_action(self, action):
@@ -121,7 +121,7 @@ class BaxterEnv(robot_env.RobotEnv):
         }
 
     def _viewer_setup(self):
-        body_id = self.sim.model.body_name2id('left_gripper')#----baxter
+        body_id = self.sim.model.body_name2id('robot0:left_gripper')#----baxter
         lookat = self.sim.data.body_xpos[body_id]
         for idx, value in enumerate(lookat):
             self.viewer.cam.lookat[idx] = value
